@@ -23,7 +23,7 @@ mvn test
 mvn jacoco:report
 ```
 
-####Include the library in maven project with following dependency
+#### Include the library in maven project with following dependency
 ```
 <dependency>
 	<groupId>com.mobiquity</groupId>
@@ -33,11 +33,11 @@ mvn jacoco:report
 ```
 
 ## Built With
-Java 11
-Maven
-JUnit and Mockito for testing
-JaCoCo for code coverage report
-Log4j for logs
+* Java 11
+* Maven
+* JUnit and Mockito for testing
+* JaCoCo for code coverage report
+* Log4j for logs
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.txt file for details

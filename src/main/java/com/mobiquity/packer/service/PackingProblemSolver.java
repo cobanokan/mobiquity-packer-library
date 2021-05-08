@@ -54,13 +54,13 @@ public class PackingProblemSolver {
 				.collect(Collectors.toList());
 		
 		final int itemsSize = items.size();
-		final int weightWithoutDecimal = problem.getWeight() * DECIMAL_MULTIPLIER;
+		final int weightWithoutFraction = problem.getWeight() * DECIMAL_MULTIPLIER;
 		
 		//We will use array of array to keep best solution matrix for each item for the target weight
-		final PackingSolution solutionMatrix[][] = new PackingSolution[itemsSize + 1][weightWithoutDecimal + 1];
+		final PackingSolution solutionMatrix[][] = new PackingSolution[itemsSize + 1][weightWithoutFraction + 1];
 		
 		for (int currentItemPosition = 0; currentItemPosition <= itemsSize; currentItemPosition++) {
-			for (int currentMaxWeight = 0; currentMaxWeight <= weightWithoutDecimal; currentMaxWeight++) {
+			for (int currentMaxWeight = 0; currentMaxWeight <= weightWithoutFraction; currentMaxWeight++) {
 				//Fill the first row and column with empty solution
 				if(currentItemPosition == 0 || currentMaxWeight == 0) {
 					solutionMatrix[currentItemPosition][currentMaxWeight] = PackingSolution.empty();
@@ -71,10 +71,10 @@ public class PackingProblemSolver {
 					PackingSolution solutionWithoutCurrentItem = solutionMatrix[currentItemPosition - 1][currentMaxWeight];
 					solutionMatrix[currentItemPosition][currentMaxWeight] = solutionWithoutCurrentItem;
 					
-					int currentItemWeightWithoutDecimal = (int) Math.round(currentItem.getWeight() * DECIMAL_MULTIPLIER);
-					if(currentItemWeightWithoutDecimal <= currentMaxWeight) {
+					int currentItemWeightWithoutFraction = (int) Math.round(currentItem.getWeight() * DECIMAL_MULTIPLIER);
+					if(currentItemWeightWithoutFraction <= currentMaxWeight) {
 						//To get the best solution that we can add our item, we check the max weight without currentItem weight
-						int weightWithoutCurrentItem = currentMaxWeight - currentItemWeightWithoutDecimal;
+						int weightWithoutCurrentItem = currentMaxWeight - currentItemWeightWithoutFraction;
 						
 						PackingSolution bestSolutionToBeUsedWithCurrentItem = solutionMatrix[currentItemPosition - 1][weightWithoutCurrentItem];
 						
@@ -90,7 +90,7 @@ public class PackingProblemSolver {
 			}
 		}
 		
-		return solutionMatrix[itemsSize][weightWithoutDecimal].getOutput();
+		return solutionMatrix[itemsSize][weightWithoutFraction].getOutput();
 	}
 
 	private Comparator<Item> getItemWeightComparator() {

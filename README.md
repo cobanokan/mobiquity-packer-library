@@ -37,7 +37,7 @@ mvn jacoco:report
 * Maven
 * JUnit and Mockito for testing
 * JaCoCo for code coverage report
-* Log4j for logs
+* Log4j2 for logging
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.txt file for details

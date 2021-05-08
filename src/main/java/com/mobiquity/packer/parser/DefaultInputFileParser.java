@@ -41,6 +41,9 @@ class DefaultInputFileParser implements InputFileParser {
         } catch (IOException e) {
         	log.error("Failed to parse file {}", filePath, e);
 			throw new APIException("Could not read file", e);
+		} catch (Exception e) {
+        	log.error("Failed to parse file {}", filePath, e);
+			throw new APIException("Invalid input format", e);
 		}
 	}
 }

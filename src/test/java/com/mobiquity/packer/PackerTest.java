@@ -24,4 +24,10 @@ class PackerTest {
 		Throwable thrownException = assertThrows(APIException.class, () -> Packer.pack(null));
 		assertEquals("Filepath can not be null", thrownException.getMessage());
 	}
+	
+	@Test
+	void throwsExceptionForInvalidInputFormat() throws APIException {
+		Throwable thrownException = assertThrows(APIException.class, () -> Packer.pack("src/test/resources/input_invalid_format"));
+		assertEquals("Invalid input format", thrownException.getMessage());
+	}
 }

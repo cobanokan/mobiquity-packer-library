@@ -1,22 +1,29 @@
-Packaging challenge
-This is an implementation of Mobiquity Package Challenge.
+# Packaging challenge
+This is an implementation of Mobiquity Packaging Challenge.
 See docs/Packaging Challenge.pdf for definition of the challenge.
 
-Usage
-Clone the project in local
-Install library in local maven repository
+## Usage
+#### Clone the project in local
+```
+git clone https://github.com/cobanokan/mobiquity-packer-library.git
+```
+
+#### Install library in local maven repository
 ```
 mvn install
 ```
-Run tests
+
+#### Run tests
 ```
 mvn test
 ```
-Generate coverage report with JaCoCo (report location target/site/jacoco/index.html)
+
+#### Generate coverage report with JaCoCo (report location target/site/jacoco/index.html)
 ```
 mvn jacoco:report
 ```
-Include the library in maven project with following dependency
+
+####Include the library in maven project with following dependency
 ```
 <dependency>
 	<groupId>com.mobiquity</groupId>
@@ -25,9 +32,12 @@ Include the library in maven project with following dependency
 </dependency>
 ```
 
-Built With
+## Built With
 Java 11
 Maven
+JUnit and Mockito for testing
+JaCoCo for code coverage report
+Log4j for logs
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE.txt file for details

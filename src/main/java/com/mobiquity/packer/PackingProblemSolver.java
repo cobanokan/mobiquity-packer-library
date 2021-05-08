@@ -1,4 +1,4 @@
-package com.mobiquity.packer.service;
+package com.mobiquity.packer;
 
 import java.util.Comparator;
 import java.util.List;
@@ -38,13 +38,13 @@ import com.mobiquity.packer.model.PackingSolution;
  * In this solution we use dynamic programing since it is scalable and cleaner than using recursion.
  * For simplicity we will assume that there could be only 2 digits in the fractional part of item weights.
  */
-public class PackingProblemSolver {
-	static Logger log = LogManager.getLogger(PackingProblemSolver.class.getName());
+class PackingProblemSolver {
+	private static Logger log = LogManager.getLogger(PackingProblemSolver.class.getName());
 
 	//We are assuming weight can have only 2 decimal points
 	private static final int DECIMAL_MULTIPLIER = 100;
 
-	public String solve(PackingProblem problem) {
+	String solve(PackingProblem problem) {
 		log.debug("Solving packing problem {}", problem);
 		
 		//Sorting items by weight to make sure that we pick the lighter item if costs are equal

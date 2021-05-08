@@ -1,4 +1,4 @@
-package com.mobiquity.packer.service;
+package com.mobiquity.packer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import com.mobiquity.packer.PackingProblemSolver;
 import com.mobiquity.packer.model.Item;
 import com.mobiquity.packer.model.PackingProblem;
 

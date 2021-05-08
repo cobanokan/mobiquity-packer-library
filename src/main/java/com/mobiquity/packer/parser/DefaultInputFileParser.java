@@ -16,12 +16,12 @@ import com.mobiquity.packer.model.PackingProblem;
 
 class DefaultInputFileParser implements InputFileParser {
 	
-	static Logger log = LogManager.getLogger(DefaultInputFileParser.class.getName());
+	private static Logger log = LogManager.getLogger(DefaultInputFileParser.class.getName());
 
 	private PackingProblemParser packingProblemParser;
 	
 	//Dependency injection is used to have loose coupling
-	public DefaultInputFileParser(PackingProblemParser packingProblemParser) {
+	DefaultInputFileParser(PackingProblemParser packingProblemParser) {
 		this.packingProblemParser = packingProblemParser;
 	}
 	

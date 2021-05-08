@@ -9,11 +9,10 @@ import org.apache.logging.log4j.Logger;
 import com.mobiquity.packer.exception.APIException;
 import com.mobiquity.packer.model.PackingProblem;
 import com.mobiquity.packer.parser.InputFileParserFactory;
-import com.mobiquity.packer.service.PackingProblemSolver;
 
 public class Packer {
 
-	static Logger log = LogManager.getLogger(Packer.class.getName());
+	private static Logger log = LogManager.getLogger(Packer.class.getName());
 	
 	private Packer() {
 		

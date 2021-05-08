@@ -9,8 +9,11 @@ import com.mobiquity.packer.model.Item;
 
 class DefaultItemParser implements ItemParser {
 
-	static Logger log = LogManager.getLogger(DefaultItemParser.class.getName());
-
+	private static Logger log = LogManager.getLogger(DefaultItemParser.class.getName());
+	
+	DefaultItemParser() {
+	}
+	
 	public Item parse(String itemAsString) throws APIException {
 		log.debug("Parsing item {}", itemAsString);
 		

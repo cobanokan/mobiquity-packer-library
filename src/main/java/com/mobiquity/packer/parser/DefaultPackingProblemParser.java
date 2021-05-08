@@ -14,11 +14,11 @@ import com.mobiquity.packer.model.PackingProblem;
 
 class DefaultPackingProblemParser implements PackingProblemParser {
 	
-	static Logger log = LogManager.getLogger(DefaultPackingProblemParser.class.getName());
+	private static Logger log = LogManager.getLogger(DefaultPackingProblemParser.class.getName());
 
 	private ItemParser itemParser;
 	
-	public DefaultPackingProblemParser(ItemParser itemParser) {
+	DefaultPackingProblemParser(ItemParser itemParser) {
 		this.itemParser = itemParser;
 	}
 	

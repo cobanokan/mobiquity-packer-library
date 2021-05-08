@@ -45,7 +45,7 @@ public class PackingSolution implements Comparable<PackingSolution> {
 				costComparison;
 	}
 	
-	public PackingSolution solutionWithNewItem(Item item) {
+	public PackingSolution cloneSolutionWithNewItem(Item item) {
 		List<Integer> indicesWithNewItem = new ArrayList<Integer>(indices);
 		indicesWithNewItem.add(item.getIndex());
 		

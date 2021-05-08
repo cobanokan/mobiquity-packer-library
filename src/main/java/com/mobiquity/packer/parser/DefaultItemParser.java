@@ -1,7 +1,7 @@
 package com.mobiquity.packer.parser;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.mobiquity.packer.constant.ConstraintConstants;
 import com.mobiquity.packer.exception.APIException;
@@ -9,7 +9,7 @@ import com.mobiquity.packer.model.Item;
 
 class DefaultItemParser implements ItemParser {
 
-	private static Logger log = LogManager.getLogger(DefaultItemParser.class.getName());
+	private static final Logger log = LoggerFactory.getLogger(DefaultItemParser.class.getName());
 	
 	DefaultItemParser() {
 	}

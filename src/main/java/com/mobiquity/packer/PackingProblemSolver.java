@@ -4,8 +4,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.mobiquity.packer.model.Item;
 import com.mobiquity.packer.model.PackingProblem;
@@ -39,7 +39,7 @@ import com.mobiquity.packer.model.PackingSolution;
  * For simplicity we will assume that there could be only 2 digits in the fractional part of item weights.
  */
 class PackingProblemSolver {
-	private static Logger log = LogManager.getLogger(PackingProblemSolver.class.getName());
+	private static final Logger log = LoggerFactory.getLogger(PackingProblemSolver.class.getName());
 
 	//We are assuming weight can have only 2 decimal points
 	private static final int DECIMAL_MULTIPLIER = 100;
@@ -56,7 +56,7 @@ class PackingProblemSolver {
 		final int itemsSize = items.size();
 		final int weightWithoutFraction = problem.getWeight() * DECIMAL_MULTIPLIER;
 		
-		//We will use array of array to keep best solution matrix for each item for the target weight
+		//We will use 2D array to keep best solution matrix for each item for the current weight
 		final PackingSolution solutionMatrix[][] = new PackingSolution[itemsSize + 1][weightWithoutFraction + 1];
 		
 		for (int currentItemPosition = 0; currentItemPosition <= itemsSize; currentItemPosition++) {
@@ -76,9 +76,9 @@ class PackingProblemSolver {
 						//To get the best solution that we can add our item, we check the max weight without currentItem weight
 						int weightWithoutCurrentItem = currentMaxWeight - currentItemWeightWithoutFraction;
 						
-						PackingSolution bestSolutionToBeUsedWithCurrentItem = solutionMatrix[currentItemPosition - 1][weightWithoutCurrentItem];
+						PackingSolution bestSolutionCanBeUsedWithCurrentItem = solutionMatrix[currentItemPosition - 1][weightWithoutCurrentItem];
 						
-						PackingSolution solutionWithNewItem = bestSolutionToBeUsedWithCurrentItem.solutionWithNewItem(currentItem);
+						PackingSolution solutionWithNewItem = bestSolutionCanBeUsedWithCurrentItem.cloneSolutionWithNewItem(currentItem);
 
 						//If solution including current item is better(higher cost/weight) we use the new solution
 						if (solutionWithNewItem.compareTo(solutionWithoutCurrentItem) > 0) {

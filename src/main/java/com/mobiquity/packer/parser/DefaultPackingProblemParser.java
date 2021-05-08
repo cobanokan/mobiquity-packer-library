@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.mobiquity.packer.constant.ConstraintConstants;
 import com.mobiquity.packer.exception.APIException;
@@ -14,7 +14,7 @@ import com.mobiquity.packer.model.PackingProblem;
 
 class DefaultPackingProblemParser implements PackingProblemParser {
 	
-	private static Logger log = LogManager.getLogger(DefaultPackingProblemParser.class.getName());
+	private static final Logger log = LoggerFactory.getLogger(DefaultPackingProblemParser.class.getName());
 
 	private ItemParser itemParser;
 	

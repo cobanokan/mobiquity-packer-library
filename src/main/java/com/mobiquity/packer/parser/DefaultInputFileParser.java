@@ -8,20 +8,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.mobiquity.packer.exception.APIException;
 import com.mobiquity.packer.model.PackingProblem;
 
 class DefaultInputFileParser implements InputFileParser {
 	
-	private static Logger log = LogManager.getLogger(DefaultInputFileParser.class.getName());
+	private static final Logger log = LoggerFactory.getLogger(DefaultInputFileParser.class.getName());
 
 	private PackingProblemParser packingProblemParser;
 	
 	//Dependency injection is used to have loose coupling
-	DefaultInputFileParser(PackingProblemParser packingProblemParser) {
+	public DefaultInputFileParser(PackingProblemParser packingProblemParser) {
 		this.packingProblemParser = packingProblemParser;
 	}
 	

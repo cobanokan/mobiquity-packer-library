@@ -1,10 +1,11 @@
 package com.mobiquity.packer;
 
 import java.util.List;
+import java.util.logging.LogManager;
 import java.util.stream.Collectors;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.mobiquity.packer.exception.APIException;
 import com.mobiquity.packer.model.PackingProblem;
@@ -12,7 +13,7 @@ import com.mobiquity.packer.parser.InputFileParserFactory;
 
 public class Packer {
 
-	private static Logger log = LogManager.getLogger(Packer.class.getName());
+	private static final Logger log = LoggerFactory.getLogger(Packer.class.getName());
 	
 	private Packer() {
 		

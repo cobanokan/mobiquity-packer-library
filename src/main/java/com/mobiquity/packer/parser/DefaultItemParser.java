@@ -11,9 +11,6 @@ class DefaultItemParser implements ItemParser {
 
 	private static final Logger log = LoggerFactory.getLogger(DefaultItemParser.class.getName());
 	
-	DefaultItemParser() {
-	}
-	
 	public Item parse(String itemAsString) throws APIException {
 		log.debug("Parsing item {}", itemAsString);
 		

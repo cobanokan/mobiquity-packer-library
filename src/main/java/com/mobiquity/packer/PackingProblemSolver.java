@@ -82,7 +82,7 @@ class PackingProblemSolver {
 						
 						PackingSolution bestSolutionCanBeUsedWithCurrentItem = solutionMatrix[currentItemPosition - 1][weightWithoutCurrentItem];
 						
-						PackingSolution solutionWithNewItem = PackingSolutionUtil.cloneSolutionWithNewItem(bestSolutionCanBeUsedWithCurrentItem, currentItem);
+						PackingSolution solutionWithNewItem = PackingSolutionUtil.getSolutionWithNewItem(bestSolutionCanBeUsedWithCurrentItem, currentItem);
 
 						//If solution including current item is better(higher cost/weight) we use the new solution
 						solutionMatrix[currentItemPosition][currentMaxWeight] = PackingSolutionUtil.pickBetterSolution(solutionWithoutCurrentItem, solutionWithNewItem);

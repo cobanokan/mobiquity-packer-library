@@ -28,7 +28,7 @@ class PackingSolutionTest {
 
 		Item secondItem = new Item(2, 1.23, 20);
 		
-		PackingSolution solutionWithSecondItem = PackingSolutionUtil.cloneSolutionWithNewItem(solutionWithFirstItem, secondItem);
+		PackingSolution solutionWithSecondItem = PackingSolutionUtil.getSolutionWithNewItem(solutionWithFirstItem, secondItem);
 		
 		assertEquals(2, solutionWithSecondItem.getIndices().size());
 		assertEquals(secondItem.getIndex(), solutionWithSecondItem.getIndices().get(1));

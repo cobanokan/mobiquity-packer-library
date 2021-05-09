@@ -51,7 +51,7 @@ class PackingSolutionUtil {
 	 * @param item item to be included in new solution
 	 * @return new solution with added item
 	 */
-	static PackingSolution cloneSolutionWithNewItem(PackingSolution solution, Item item) {
+	static PackingSolution getSolutionWithNewItem(PackingSolution solution, Item item) {
 		List<Integer> indicesWithNewItem = new ArrayList<Integer>(solution.getIndices());
 		indicesWithNewItem.add(item.getIndex());
 		

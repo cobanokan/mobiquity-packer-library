@@ -10,6 +10,7 @@ import com.mobiquity.packer.exception.APIException;
 import com.mobiquity.packer.model.PackingProblem;
 import com.mobiquity.packer.parser.InputFileParserFactory;
 
+//Facade design pattern is used. Complexity of the library is hidden to outside
 public class Packer {
 
 	private static final Logger log = LoggerFactory.getLogger(Packer.class.getName());

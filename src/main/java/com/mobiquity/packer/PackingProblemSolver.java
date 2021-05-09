@@ -61,6 +61,7 @@ class PackingProblemSolver {
 		final int weightWithoutFraction = problem.getWeight() * DECIMAL_MULTIPLIER;
 		
 		//We will use 2D array to keep best solution matrix for each item for the current weight
+		//It will be easy to access best solution for a row and column
 		final PackingSolution solutionMatrix[][] = new PackingSolution[itemsSize + 1][weightWithoutFraction + 1];
 		
 		for (int currentItemPosition = 0; currentItemPosition <= itemsSize; currentItemPosition++) {

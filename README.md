@@ -32,6 +32,13 @@ mvn jacoco:report
 </dependency>
 ```
 
+#### Customizing Constraints
+Constraints can be customized by adding optional *packer.properties* file under resources with following keys:
+* item.max.number=15
+* item.max.weight=100
+* item.max.cost=100
+* package.max.weight=100
+
 ## Built With
 * Java 11
 * Maven

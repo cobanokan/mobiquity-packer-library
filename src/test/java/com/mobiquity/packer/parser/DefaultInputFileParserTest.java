@@ -51,7 +51,7 @@ class DefaultInputFileParserTest {
 	}
 	
 	@Test
-	void throwsExceptionForInvalidFilPath() throws APIException {
+	void throwsExceptionForInvalidFilePath() throws APIException {
 		Throwable thrownException = assertThrows(APIException.class, () -> {
 			parser.parse("invalid_file_path");
 		});

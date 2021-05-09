@@ -3,7 +3,7 @@ package com.mobiquity.packer.parser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mobiquity.packer.constant.ConstraintConstants;
+import com.mobiquity.packer.PackerProperties;
 import com.mobiquity.packer.exception.APIException;
 import com.mobiquity.packer.model.Item;
 
@@ -19,15 +19,15 @@ class DefaultItemParser implements ItemParser {
 		int index = Integer.valueOf(split[0]);
 		
 		double weight = Double.valueOf(split[1]);
-		if (weight > ConstraintConstants.MAX_ITEM_WEIGHT) {			
-			log.error("Item weight {} exceeds max allowed weight {}", weight, ConstraintConstants.MAX_ITEM_WEIGHT);
+		if (weight > PackerProperties.getMaxItemWeight()) {			
+			log.error("Item weight {} exceeds max allowed weight {}", weight, PackerProperties.getMaxItemWeight());
 			throw new APIException("Max allowed item weight exceeded");
 		}
 		
 		String valueWithoutCurrency = split[2].substring(1);
 		int cost = Integer.valueOf(valueWithoutCurrency);
-		if (cost > ConstraintConstants.MAX_ITEM_COST) {
-			log.error("Item cost {} exceeds max allowed cost {}", weight, ConstraintConstants.MAX_ITEM_COST);
+		if (cost > PackerProperties.getMaxItemCost()) {
+			log.error("Item cost {} exceeds max allowed cost {}", weight, PackerProperties.getMaxItemCost());
 			throw new APIException("Max allowed item cost exceeded");			
 		}
 

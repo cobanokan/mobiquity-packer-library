@@ -7,7 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mobiquity.packer.constant.ConstraintConstants;
+import com.mobiquity.packer.PackerProperties;
 import com.mobiquity.packer.exception.APIException;
 import com.mobiquity.packer.model.Item;
 import com.mobiquity.packer.model.PackingProblem;
@@ -28,8 +28,8 @@ class DefaultPackingProblemParser implements PackingProblemParser {
 		String[] split = inputLine.split(":");
 		
 		Integer packageWeight = Integer.valueOf(split[0].trim());
-		if (packageWeight > ConstraintConstants.MAX_PACKAGE_WEIGHT) {
-			log.error("Package weight {} exceedes max allowed package weight {}", packageWeight, ConstraintConstants.MAX_PACKAGE_WEIGHT);
+		if (packageWeight > PackerProperties.getMaxPackageWeight()) {
+			log.error("Package weight {} exceedes max allowed package weight {}", packageWeight, PackerProperties.getMaxPackageWeight());
 			throw new APIException("Package weight exceeds max package weight constraint");
 		}
 		
@@ -38,8 +38,8 @@ class DefaultPackingProblemParser implements PackingProblemParser {
 				.replace(")", "");
 		
 		List<String> itemsAsStringList = Arrays.asList(itemsStringSeperatedBySpace.split(" "));
-		if (itemsAsStringList.size() > ConstraintConstants.MAX_ITEM_NUMBER) {
-			log.error("Max allowed item number {} exceeded", ConstraintConstants.MAX_ITEM_NUMBER);
+		if (itemsAsStringList.size() > PackerProperties.getMaxItemNumber()) {
+			log.error("Max allowed item number {} exceeded", PackerProperties.getMaxItemNumber());
 			throw new APIException("Number of items exceeds max allowed item number");
 		}
 		

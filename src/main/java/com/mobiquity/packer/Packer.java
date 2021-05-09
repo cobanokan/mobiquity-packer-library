@@ -28,6 +28,7 @@ public class Packer {
 	public static String pack(String filePath) throws APIException {
 		log.info("Packing input file at {}", filePath);
 		if (filePath == null) {
+			log.error("Filepath can not be null");
 			throw new APIException("Filepath can not be null");
 		}
 	

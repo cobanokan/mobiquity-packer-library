@@ -44,6 +44,10 @@ class PackingProblemSolver {
 	//We are assuming weight can have only 2 decimal points
 	private static final int DECIMAL_MULTIPLIER = 100;
 
+	/**
+	 * @param problem problem to be solved
+	 * @return solution output for the problem
+	 */
 	String solve(PackingProblem problem) {
 		log.debug("Solving packing problem {}", problem);
 		
@@ -78,19 +82,17 @@ class PackingProblemSolver {
 						
 						PackingSolution bestSolutionCanBeUsedWithCurrentItem = solutionMatrix[currentItemPosition - 1][weightWithoutCurrentItem];
 						
-						PackingSolution solutionWithNewItem = bestSolutionCanBeUsedWithCurrentItem.cloneSolutionWithNewItem(currentItem);
+						PackingSolution solutionWithNewItem = PackingSolutionUtil.cloneSolutionWithNewItem(bestSolutionCanBeUsedWithCurrentItem, currentItem);
 
 						//If solution including current item is better(higher cost/weight) we use the new solution
-						if (solutionWithNewItem.compareTo(solutionWithoutCurrentItem) > 0) {
-							solutionMatrix[currentItemPosition][currentMaxWeight] = solutionWithNewItem;
-						}
+						solutionMatrix[currentItemPosition][currentMaxWeight] = PackingSolutionUtil.pickBetterSolution(solutionWithoutCurrentItem, solutionWithNewItem);
 					}
 				}
 				
 			}
 		}
 		
-		return solutionMatrix[itemsSize][weightWithoutFraction].getOutput();
+		return PackingSolutionUtil.getOutput(solutionMatrix[itemsSize][weightWithoutFraction]);
 	}
 
 	private Comparator<Item> getItemWeightComparator() {

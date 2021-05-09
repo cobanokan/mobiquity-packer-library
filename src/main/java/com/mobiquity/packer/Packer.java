@@ -1,7 +1,6 @@
 package com.mobiquity.packer;
 
 import java.util.List;
-import java.util.logging.LogManager;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;

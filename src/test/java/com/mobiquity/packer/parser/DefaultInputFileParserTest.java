@@ -55,8 +55,25 @@ class DefaultInputFileParserTest {
 		Throwable thrownException = assertThrows(APIException.class, () -> {
 			parser.parse("invalid_file_path");
 		});
-		
+
 		assertEquals("Could not read file", thrownException.getMessage());
+		verifyNoMoreInteractions(packingProblemParser);
+	}
+	
+	@Test
+	void throwsExceptionIfParsingFails() throws APIException {
+		RuntimeException runtimeException = new RuntimeException("message");
+		
+		when(packingProblemParser.parse(anyString())).thenThrow(runtimeException);
+		
+		Throwable thrownException = assertThrows(APIException.class, () -> {
+			parser.parse("src/test/resources/example_input");
+		});
+		
+		assertEquals("Invalid input format", thrownException.getMessage());
+		assertEquals(runtimeException, thrownException.getCause());
+		
+		verify(packingProblemParser).parse(anyString());
 		verifyNoMoreInteractions(packingProblemParser);
 	}
 }
